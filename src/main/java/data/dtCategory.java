@@ -1,6 +1,7 @@
 package main.java.data;
 
-import entities.categoryTable;
+import main.java.entities.categoryTable;
+import data.connectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class dtCategory {
 
-    data.connectionPool pc = data.connectionPool.getInstance();
+    connectionPool pc = connectionPool.getInstance();
     Connection c = null;
     private ResultSet rsCategory = null;
     private ResultSet rs = null;
@@ -62,6 +63,36 @@ public class dtCategory {
             }
         }
         return listCat;
+    }
+
+    public boolean addCategory(categoryTable cat){
+        boolean saved = false;
+        try {
+            c = connectionPool.getConnection();
+            this.fillRsCategory(c);
+            rsCategory.moveToInsertRow();
+            rsCategory.updateString("name", cat.getName());
+            rsCategory.updateString("description", cat.getDescription());
+
+            rsCategory.insertRow();
+            rsCategory.moveToCurrentRow();
+            saved = true;
+        } catch (Exception e) {
+            System.out.println("ERROR EN AGREGAR CATEGORIA: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if(rsCategory != null){
+                    rsCategory.close();
+                }
+                if(c != null){
+                    connectionPool.closeConnection(c);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return saved;
     }
 
 }
