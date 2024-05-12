@@ -1,11 +1,12 @@
 package entities;
 
-public class tblRol {
+public class roleTable
+{
     private int roleId;
     private String name;
     private String description;
 
-    public tblRol() {
+    public roleTable() {
     }
 
     public int getRoleId() {
@@ -26,5 +27,9 @@ public class tblRol {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
