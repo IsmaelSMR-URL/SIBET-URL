@@ -82,7 +82,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="/Users/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>Perfil</span>
               </a>
@@ -196,26 +196,34 @@
         <!-- Horizontal Form -->
         <form>
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Your Name</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre del producto</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputText">
             </div>
           </div>
+
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputEmail">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
+              <input type="text" class="form-control" id="inputText">
             </div>
           </div>
 
           <div class="row mb-3">
-            <label for="inputState" class="col-sm-2 col-form-label">Password</label>
+            <label for="inputState" class="col-sm-2 col-form-label">Proveedor</label>
+            <div class="col-sm-10">
+              <div>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="row mb-3">
+            <label for="inputState" class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-10">
               <div>
                 <select id="inputState" class="form-select">
@@ -226,12 +234,33 @@
             </div>
           </div>
 
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Cantidad</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputText">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Precio</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputText" step="0.01" min="0.00">
+            </div>
+          </div>
+          
+          
+
 
           
           
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
+
+            <a href="/inventory/products.html">
+              <button class="btn btn-success w-45" type="button">Cancelar</button>
+            </a>
+            
           </div>
         </form><!-- End Horizontal Form -->
 

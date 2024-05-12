@@ -64,21 +64,20 @@
                     <p class="text-center small">Ingresa tu correo y contraseña</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3" id="loginForm">
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Correo</label>
-                      <div class="input-group has-validation">
+                      <div class="input-group">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Porfavor, ingresa tu correo</div>
+                        <input type="email" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Por favor, ingresa un correo válido</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Porfavor, ingresa tu contraseña</div>
+                      <div class="invalid-feedback">Por favor, ingresa tu contraseña</div>
                     </div>
 
                     <div class="col-12">
@@ -97,9 +96,7 @@
             </div>
           </div>
         </div>
-
       </section>
-
     </div>
   </main><!-- End #main -->
 
@@ -118,6 +115,65 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Custom script for login validation -->
+  <script>
+    // Wait for the DOM to be ready
+    document.addEventListener("DOMContentLoaded", function() {
+      // Select form
+      const form = document.getElementById("loginForm");
+      // Add event listener for form submission
+      form.addEventListener("submit", function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+        // Select username and password inputs
+        const usernameInput = form.querySelector("[name='username']");
+        const passwordInput = form.querySelector("[name='password']");
+        // Select invalid feedback elements
+        const usernameFeedback = form.querySelector("#yourUsername + .invalid-feedback");
+        const passwordFeedback = form.querySelector("#yourPassword + .invalid-feedback");
+        // Reset validity
+        usernameInput.setCustomValidity("");
+        passwordInput.setCustomValidity("");
+        // Check if username is empty
+        if (!usernameInput.value.trim()) {
+          // Set custom validity message
+          usernameInput.setCustomValidity("Por favor, ingresa un correo");
+          // Display invalid feedback
+          usernameFeedback.style.display = "block";
+        } else {
+          // Hide invalid feedback
+          usernameFeedback.style.display = "none";
+        }
+        // Check if password is empty
+        if (!passwordInput.value.trim()) {
+          // Set custom validity message
+          passwordInput.setCustomValidity("Por favor, ingresa una contraseña");
+          // Display invalid feedback
+          passwordFeedback.style.display = "block";
+        } else {
+          // Hide invalid feedback
+          passwordFeedback.style.display = "none";
+        }
+        // Check if form is valid
+        if (form.checkValidity()) {
+          // Perform form submission (simulated login)
+          simulateLogin(usernameInput.value, passwordInput.value);
+        }
+      });
+    });
+
+    // Function to simulate login (replace with actual login logic)
+    function simulateLogin(username, password) {
+      // Check if username and password match the expected values
+      if (username === "correo@test.com" && password === "12345") {
+        // Redirect to index.html (replace with actual redirection)
+        window.location.href = "/index.html";
+      } else {
+        // Show alert for invalid credentials (replace with actual error handling)
+        alert("Credenciales inválidas. Por favor, inténtalo de nuevo.");
+      }
+    }
+  </script>
 </body>
 
 </html>
