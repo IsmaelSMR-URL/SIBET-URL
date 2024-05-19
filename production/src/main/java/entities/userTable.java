@@ -8,8 +8,6 @@ public class userTable {
     private String lastname;
     private int roles;
 
-    private int roles;
-
     public userTable() {
     }
 

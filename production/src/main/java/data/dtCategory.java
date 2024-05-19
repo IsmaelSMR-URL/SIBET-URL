@@ -1,7 +1,6 @@
-package main.java.data;
+package data;
 
-import main.java.entities.categoryTable;
-import data.connectionPool;
+import entities.categoryTable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -9,7 +9,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sibet" target="20" />
+      <module name="sibet" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,7 +1,6 @@
-package main.java.data;
+package data;
 
-import main.java.entities.itemTable;
-import data.connectionPool;
+import entities.itemTable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 
 public class dtItem {
 
-    connectionPool pc = data.connectionPool.getInstance();
+    connectionPool pc = connectionPool.getInstance();
     Connection c = null;
     private ResultSet rsItem = null;
     private ResultSet rs = null;
