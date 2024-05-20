@@ -71,8 +71,8 @@ public class dtItem {
         boolean saved = false;
         try {
             c = connectionPool.getConnection();
-            this.fillRsItem(c);
-            this.rsItem.moveToInsertRow();
+            fillRsItem(c);
+            rsItem.moveToInsertRow();
             rsItem.updateString("name", Item.getName());
             rsItem.updateString("description", Item.getDescription());
             rsItem.updateInt("quantity", Item.getQuantity());
