@@ -1,6 +1,6 @@
 package data;
 
-import entities.permissionTable;
+import entities.tables.permissionTable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

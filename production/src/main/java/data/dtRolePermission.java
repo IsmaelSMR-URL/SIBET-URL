@@ -1,6 +1,7 @@
 package data;
 
-import entities.rolePermissionTable;
+import entities.tables.rolePermissionTable;
+import entities.views.vwRolePermission;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ public class dtRolePermission {
     private PreparedStatement ps = null;
 
     public void fillRsRolePermission(Connection c) {
-        try{
+        try {
             ps = c.prepareStatement("SELECT * FROM sibet.rolepermission;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rsRolePermission = ps.executeQuery();
         } catch (SQLException e) {
@@ -26,24 +27,24 @@ public class dtRolePermission {
         }
     }
 
-    public ArrayList<vwRolePermissions> listRolePermissions(){
-        ArrayList<vwRolePermissions> listRolePermission = new ArrayList<vwRolePermissions>();
-        try{
+    public ArrayList<vwRolePermission> listRolePermissions() {
+        ArrayList<vwRolePermission> listRolePermission = new ArrayList<vwRolePermission>();
+        try {
             c = connectionPool.getConnection();
-            ps = c.prepareStatement("SELECT * FROM sibet.vwRolePermissions;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps = c.prepareStatement("SELECT * FROM sibet.vwRolePermission;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = ps.executeQuery();
-            while(rs.next()) {
-                vwRolePermissions rolePermission = new vwRolePermissions();
-                rolePermission.setRoleId(rs.getInt("roleId"));
+            while (rs.next()) {
+                vwRolePermission rolePermission = new vwRolePermission();
+                rolePermission.setRolePermissionId(rs.getInt("rolePermissionId"));
                 rolePermission.setRoleName(rs.getString("roleName"));
-                rolePermission.setPermissionId(rs.getInt("permissionId"));
                 rolePermission.setPermissionName(rs.getString("permissionName"));
+                rolePermission.setDescription(rs.getString("description"));
                 listRolePermission.add(rolePermission);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("DATOS: ERROR AL LISTAR PERMISOS DE ROL" + e.getMessage());
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (rs != null) {
                     rs.close();
@@ -61,9 +62,9 @@ public class dtRolePermission {
         return listRolePermission;
     }
 
-    public boolean assignPermission(rolePermissionTable rolePermission){
+    public boolean assignPermission(rolePermissionTable rolePermission) {
         boolean saved = false;
-        try{
+        try {
             c = connectionPool.getConnection();
             this.fillRsRolePermission(c);
             this.rsRolePermission.moveToInsertRow();
@@ -75,10 +76,10 @@ public class dtRolePermission {
             rsRolePermission.moveToCurrentRow();
             saved = true;
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("DATOS: ERROR AL ASIGNAR PERMISO A ROL" + e.getMessage());
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (rsRolePermission != null) {
                     rsRolePermission.close();
@@ -125,4 +126,37 @@ public class dtRolePermission {
         }
         return modified;
     }
+
+    public boolean deleteRolePermission(int id) {
+        boolean deleted = false;
+        try {
+            c = connectionPool.getConnection();
+            ps = c.prepareStatement("DELETE FROM sibet.rolepermission WHERE rolePermissionId = ?; ", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, id);
+
+            if (ps.executeUpdate() > 0) {
+                deleted = true;
+            }
+        } catch (Exception e) {
+            System.out.println("DATOS: ERROR AL ELIMINAR PERMISO DE ROL" + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rsRolePermission != null) {
+                    rsRolePermission.close();
+                }
+                if (c != null) {
+                    connectionPool.closeConnection(c);
+                }
+                if (c != null) {
+                    connectionPool.closeConnection(c);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return deleted;
+    }
+    
 }
+

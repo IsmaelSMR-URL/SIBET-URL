@@ -1,4 +1,4 @@
-package entities;
+package entities.tables;
 
 public class rolePermissionTable {
     private int rolePermissionId;

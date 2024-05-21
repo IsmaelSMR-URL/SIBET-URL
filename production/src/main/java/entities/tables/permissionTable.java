@@ -1,20 +1,19 @@
-package entities;
+package entities.tables;
 
-public class roleTable
-{
-    private int roleId;
+public class permissionTable {
+    private int permissionId;
     private String name;
     private String description;
 
-    public roleTable() {
+    public permissionTable() {
     }
 
-    public int getRoleId() {
-        return roleId;
+    public int getPermissionId() {
+        return permissionId;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setPermissionId(int permissionId) {
+        this.permissionId = permissionId;
     }
 
     public String getName() {

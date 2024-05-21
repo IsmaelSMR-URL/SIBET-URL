@@ -1,19 +1,20 @@
-package entities;
+package entities.tables;
 
-public class categoryTable {
-    private int categoryId;
+public class roleTable
+{
+    private int roleId;
     private String name;
     private String description;
 
-    public categoryTable() {
+    public roleTable() {
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -31,5 +32,4 @@ public class categoryTable {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

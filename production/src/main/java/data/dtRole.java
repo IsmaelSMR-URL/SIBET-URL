@@ -1,6 +1,6 @@
 package data;
 
-import entities.roleTable;
+import entities.tables.roleTable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

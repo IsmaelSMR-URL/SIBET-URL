@@ -1,6 +1,6 @@
 package data;
 
-import entities.typeTable;
+import entities.tables.typeTable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

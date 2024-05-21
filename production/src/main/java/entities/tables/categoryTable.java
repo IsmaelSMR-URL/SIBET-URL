@@ -1,19 +1,19 @@
-package entities;
+package entities.tables;
 
-public class permissionTable {
-    private int permissionId;
+public class categoryTable {
+    private int categoryId;
     private String name;
     private String description;
 
-    public permissionTable() {
+    public categoryTable() {
     }
 
-    public int getPermissionId() {
-        return permissionId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setPermissionId(int permissionId) {
-        this.permissionId = permissionId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -31,4 +31,5 @@ public class permissionTable {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
