@@ -261,7 +261,7 @@
             </table>
             <!-- End Table with stripped rows -->
 
-            <a href="/type-forms/create-type-form.html">
+            <a href="../inventory/type-forms/create-type-form.jsp">
                 <button class="btn btn-primary w-45" type="button">Nuevo</button>
             </a>
 

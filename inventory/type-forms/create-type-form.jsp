@@ -1,3 +1,14 @@
+<%@ page language="java" contentType="text/html; ISO-8859-1" pageEncoding="ISO-8859-1" import="entities.*, data.*, java.util.*" %>
+
+<%
+    response.setHeader( "Pragma", "no-cache" );
+    response.setHeader( "Cache-Control", "no-store" );
+    response.setDateHeader( "Expires", 0 );
+    response.setDateHeader( "Expires", -1 );
+
+
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,17 +218,18 @@
         <h1>Nuevo Tipo de Producto</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Inventario</a></li>
+                <li class="breadcrumb-item">Inventario</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Nuevo Tipo de Producto</h5>
+            <h5 class="card-title">Nuevo Tipo</h5>
 
             <!-- Horizontal Form -->
-            <form id="saveType">
+            <form class="" action="../slType" method="post" novalidate>
+                <input type="hidden" value="1" name="opcion" id="opcion"/>
                 <div class="row mb-3">
                     <label for="idType" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
@@ -267,6 +279,30 @@
 <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
 <script src="../../assets/vendor/php-email-form/validate.js"></script>
 <script src="../../script.js"></script>
+
+<script>
+    // initialize a validator instance from the "FormValidator" constructor.
+    // A "<form>" element is optionally passed as an argument, but is not a must
+    var validator = new FormValidator({
+        "events" : [ 'blur', 'input', 'change' ]
+    }, document.forms[0]);
+    // on form "submit" event
+    document.forms[0].onsubmit = function(e) {
+        var submit = true, validatorResult = validator.checkAll(this);
+        console.log(validatorResult);
+        return !!validatorResult.valid;
+    };
+    // on form "reset" event
+    document.forms[0].onreset = function(e) {
+        validator.reset();
+    };
+    // stuff related ONLY for this demo page:
+    $('.toggleValidationTooltips').change(function() {
+        validator.settings.alerts = !this.checked;
+        if (this.checked)
+            $('form .alert').remove();
+    }).prop('checked', false);
+</script>
 
 <!-- Template Main JS File -->
 <script src="../../assets/js/main.js"></script>

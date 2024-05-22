@@ -24,7 +24,7 @@ public class slType extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int opc = 0;
-        opc = Integer.parseInt(request.getParameter("type"));
+        opc = Integer.parseInt(request.getParameter("opcion"));
         typeTable type = new typeTable();
         dtType dtt = new dtType();
 
