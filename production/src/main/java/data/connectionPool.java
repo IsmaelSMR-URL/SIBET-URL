@@ -10,7 +10,7 @@ public class connectionPool {
     private static connectionPool INSTANCE = null;
     private static Connection con = null;
     private static BasicDataSource ds = null;
-    private static String url = "jdbc:mysql://localhost:3306/sibet?autoReconnect=true&useSSL=false&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost:3306/sibeturl?autoReconnect=true&useSSL=false&serverTimezone=UTC";
     private static String user = "root";
     private static String password = "My$QL5183T.!";
 
