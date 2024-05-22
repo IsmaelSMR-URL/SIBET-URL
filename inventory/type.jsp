@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" import="data.*, entities.*, java.util.*"%>
+<%@ page import="entities.tables.typeTable" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,35 +134,35 @@
         <li class="nav-heading">Inventario</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/item.html">
+            <a class="nav-link collapsed" href="/item.html">
                 <i class="bi bi-box-seam"></i>
                 <span>Productos</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/category.html">
+            <a class="nav-link collapsed" href="/category.html">
                 <i class="bi bi-tags"></i>
                 <span>Categorias</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/type.html">
+            <a class="nav-link collapsed" href="/type.jsp">
                 <i class="bi bi-code-slash"></i>
                 <span>Tipo</span>
             </a>
         </li><!-- End Inventory Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/provider.html">
+            <a class="nav-link collapsed" href="/provider.html">
                 <i class="bi bi-building"></i>
                 <span>Proveedores</span>
             </a>
         </li><!-- End Inventory Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/itemProvider.html">
+            <a class="nav-link collapsed" href="/itemProvider.html">
                 <i class="bi bi-buildings"></i>
                 <span>Proveedor de productos</span>
             </a>
@@ -205,7 +209,7 @@
         <h1>Tipo</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Inventario</a></li>
+                <li class="breadcrumb-item">Inventario</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -216,6 +220,13 @@
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
+
+                <%
+                ArrayList<typeTable> listTypes = new ArrayList<typeTable>();
+                dtType dtt = new dtType();
+                listTypes = dtt.listTypes();
+                %>
+
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -225,30 +236,32 @@
                 </tr>
                 </thead>
                 <tbody>
+                    <%
+                    for (typeTable tt : listTypes) {
+
+                    %>
                 <tr>
-                    <td>1</td>
-                    <td>Nombre de Tipo</td>
+                    <td><%=tt.getTypeId()%></td>
+                    <td><%=tt.getName()%></td>
                     <td>
-                        <a href="../inventory/type-forms/read-type-form.html">
+                        <a href="/type-forms/read-type-form.html">
                             <button class="btn btn-primary w-30" type="button">Ver</button>
                         </a>
-                        <a href="../inventory/type-forms/update-type-form.html">
+                        <a href="/type-forms/update-type-form.html">
                             <button class="btn btn-secondary w-30" type="button">Editar</button>
                         </a>
-                        <a href="../inventory/type-forms/delete-type-form.html">
+                        <a href="/type-forms/delete-type-form.html">
                             <button class="btn btn-success w-30" type="button">Eliminar</button>
                         </a>
                     </td>
                     </td>
                 </tr>
-
-
-
+                <%}%>
                 </tbody>
             </table>
             <!-- End Table with stripped rows -->
 
-            <a href="../inventory/type-forms/create-type-form.html">
+            <a href="/type-forms/create-type-form.html">
                 <button class="btn btn-primary w-45" type="button">Nuevo</button>
             </a>
 

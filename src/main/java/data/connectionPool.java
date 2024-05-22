@@ -10,7 +10,7 @@ public class connectionPool {
     private static connectionPool INSTANCE = null;
     private static Connection con = null;
     private static BasicDataSource ds = null;
-    private static String url = "jdbc:mysql://localhost:3306/sibeturl?autoReconnect=true&useSSL=false&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost:3306/sibet?autoReconnect=true&useSSL=false&serverTimezone=UTC";
     private static String user = "root";
     private static String password = "My$QL5183T.!";
 
@@ -52,7 +52,6 @@ public class connectionPool {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR: " + e.getMessage());
         }
         return resp;
     }
@@ -64,7 +63,6 @@ public class connectionPool {
                 System.out.println("Connection Established Successfully");
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("ERROR: " + e.getMessage());
             }
         }
         return con;
@@ -77,7 +75,6 @@ public class connectionPool {
                 System.out.println("Connection Closed");
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println(e.getMessage());
             }
         }
     }

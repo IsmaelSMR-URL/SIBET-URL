@@ -130,35 +130,35 @@
         <li class="nav-heading">Inventario</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/item.html">
+            <a class="nav-link collapsed" href="/item.html">
                 <i class="bi bi-box-seam"></i>
                 <span>Productos</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/category.html">
+            <a class="nav-link collapsed" href="/category.html">
                 <i class="bi bi-tags"></i>
                 <span>Categorias</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/type.html">
+            <a class="nav-link collapsed" href="type.jsp">
                 <i class="bi bi-code-slash"></i>
                 <span>Tipo</span>
             </a>
         </li><!-- End Inventory Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/provider.html">
+            <a class="nav-link collapsed" href="/provider.html">
                 <i class="bi bi-building"></i>
                 <span>Proveedores</span>
             </a>
         </li><!-- End Inventory Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="../inventory/itemProvider.html">
+            <a class="nav-link collapsed" href="/itemProvider.html">
                 <i class="bi bi-buildings"></i>
                 <span>Proveedor de productos</span>
             </a>
@@ -228,13 +228,13 @@
             <td>Producto</td>
             <td>Arris DG2460</td>
             <td>
-                <a href="../inventory/itemProvider-forms/read-itemProvider-form.html">
+                <a href="/itemProvider-forms/read-itemProvider-form.html">
                     <button class="btn btn-primary w-45" type="button">Ver</button>
                 </a>
-                <a href="../inventory/itemProvider-forms/update-itemProvider-form.html">
+                <a href="/itemProvider-forms/update-itemProvider-form.html">
                     <button class="btn btn-secondary w-45" type="button">Editar</button>
                 </a>
-                <a href="../inventory/itemProvider-forms/delete-itemProvider-form.html">
+                <a href="/itemProvider-forms/delete-itemProvider-form.html">
                     <button class="btn btn-success w-45" type="button">Eliminar</button>
                 </a>
             </td>
@@ -247,7 +247,7 @@
     </table>
     <!-- End Table with stripped rows -->
 
-    <a href="../inventory/itemProvider-forms/create-itemProvider-form.html">
+    <a href="/itemProvider-forms/create-itemProvider-form.html">
         <button class="btn btn-primary w-45" type="button">Nuevo</button>
     </a>
 
