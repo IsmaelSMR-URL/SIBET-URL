@@ -21,7 +21,7 @@ public class dtType {
 
     public void fillRsType(Connection c){
         try {
-            this.ps = c.prepareStatement("SELECT * FROM type", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
+            this.ps = c.prepareStatement("SELECT * FROM sibet.type", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             this.rsType = ps.executeQuery();
         } catch (Exception e) {
             System.out.println("ERROR EN LISTAR TIPOS: " + e.getMessage());
@@ -32,7 +32,7 @@ public class dtType {
     public ArrayList<typeTable> listTypes(){
         ArrayList<typeTable> listType = new ArrayList<typeTable>();
         try{
-            this.c = pc.getConnection();
+            this.c = connectionPool.getConnection();
             this.ps = this.c.prepareStatement("SELECT * FROM sibet.type", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             this.rs = this.ps.executeQuery();
 
