@@ -96,4 +96,64 @@ public class dtType {
         return saved;
     }
 
+    public boolean updateType(typeTable type) {
+        boolean modified = false;
+        try {
+            c = connectionPool.getConnection();
+            this.fillRsType(c);
+            while (rsType.next()) {
+                if (rsType.getInt("typeId") == type.getTypeId()) {
+                    rsType.updateString("name", type.getName());
+                    rsType.updateRow();
+                    modified = true;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR EN MODIFICAR TIPO: " + e.getMessage());
+            e.printStackTrace();
+        }finally {
+            try {
+                if (rsType != null) {
+                    rsType.close();
+                }
+                if (c != null) {
+                    connectionPool.closeConnection(c);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return modified;
+    }
+
+    public boolean deleteType(int typeId) {
+        boolean deleted = false;
+        try {
+            c = connectionPool.getConnection();
+            this.fillRsType(c);
+            while (rsType.next()) {
+                if (rsType.getInt("typeId") == typeId) {
+                    rsType.deleteRow();
+                    deleted = true;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR EN ELIMINAR TIPO: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rsType != null) {
+                    rsType.close();
+                }
+                if (c != null) {
+                    connectionPool.closeConnection(c);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return deleted;
+    }
 }

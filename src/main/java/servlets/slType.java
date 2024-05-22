@@ -33,6 +33,8 @@ public class slType extends HttpServlet {
 
         switch (opc) {
             case 1:
+                type.setTypeId(Integer.parseInt(request.getParameter("typeId")));
+                type.setName(request.getParameter("name"));
                 try{
                     if(dtt.addType(type)){
                         response.sendRedirect("/inventory/type.jsp?msj=1");
@@ -44,6 +46,35 @@ public class slType extends HttpServlet {
                     e.printStackTrace();
                 }
 
+                break;
+
+            case 2:
+                type.setTypeId(Integer.parseInt(request.getParameter("typeId")));
+                type.setName(request.getParameter("name"));
+                try{
+                    if(dtt.updateType(type)){
+                        response.sendRedirect("/inventory/type.jsp?msj=3");
+                    }else{
+                        response.sendRedirect("/inventory/type.jsp?msj=4");
+                    }
+                }catch (Exception e){
+                    System.out.println("ERROR AL MODIFICAR (Servlet) TYPE: " + e.getMessage());
+                    e.printStackTrace();
+                }
+                break;
+
+            case 3:
+                type.setTypeId(Integer.parseInt(request.getParameter("typeId")));
+                try{
+                    if(dtt.deleteType(type.getTypeId())){
+                        response.sendRedirect("/inventory/type.jsp?msj=5");
+                    }else{
+                        response.sendRedirect("/inventory/type.jsp?msj=6");
+                    }
+                }catch (Exception e){
+                    System.out.println("ERROR AL ELIMINAR (Servlet) TYPE: " + e.getMessage());
+                    e.printStackTrace();
+                }
                 break;
 
             default:

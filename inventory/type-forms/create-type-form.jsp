@@ -228,12 +228,12 @@
             <h5 class="card-title">Nuevo Tipo</h5>
 
             <!-- Horizontal Form -->
-            <form class="" action="../slType" method="post" novalidate>
+            <form class="" action="../../src/main/java/servlets/slType" method="post" novalidate>
                 <input type="hidden" value="1" name="opcion" id="opcion"/>
                 <div class="row mb-3">
                     <label for="idType" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="idType">
+                        <input type="number" class="form-control" id="idType" required="required">
                     </div>
                 </div>
 
