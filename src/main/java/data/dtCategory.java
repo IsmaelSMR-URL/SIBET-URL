@@ -1,6 +1,7 @@
 package data;
 
 import entities.tables.categoryTable;
+import entities.views.vwTypeCategory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,18 +29,20 @@ public class dtCategory {
         }
     }
 
-    public ArrayList<categoryTable> listCategories(){
-        ArrayList<categoryTable> listCat = new ArrayList<categoryTable>();
+    public ArrayList<vwTypeCategory> listCategories(){
+        ArrayList<vwTypeCategory> listCat = new ArrayList<vwTypeCategory>();
         try {
             this.c = pc.getConnection();
-            this.ps = this.c.prepareStatement("SELECT * FROM sibet.category;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            this.ps = this.c.prepareStatement("SELECT * FROM sibet.vwTypeCategory;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             this.rsCategory = this.ps.executeQuery();
 
             while (this.rsCategory.next()) {
-                categoryTable cat = new categoryTable();
-                cat.setCategoryId(this.rsCategory.getInt("categoryId"));
-                cat.setName(this.rsCategory.getString("name"));
-                cat.setDescription(this.rsCategory.getString("description"));
+                vwTypeCategory cat = new vwTypeCategory();
+                cat.setTcId(this.rsCategory.getInt("tcId"));
+                cat.setType(this.rsCategory.getString("type"));
+                cat.setCat(this.rsCategory.getString("cat"));
+                cat.setDesc(this.rsCategory.getString("desc"));
+
                 listCat.add(cat);
             }
         } catch (Exception e) {

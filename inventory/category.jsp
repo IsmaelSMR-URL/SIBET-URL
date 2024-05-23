@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; ISO-8859-1" pageEncoding="iso-8859-1" import="entities.tables.*, entities.views.*, data.*, java.util.*" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -205,28 +207,39 @@
       <h1>Categorias</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Inventario</a></li>
+          <li class="breadcrumb-item">Inventario</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <!-- Table with stripped rows -->
     <table class="table datatable">
+
+      <%
+        ArrayList<vwTypeCategory> listCat = new ArrayList<vwTypeCategory>();
+        dtCategory dtc = new dtCategory();
+        listCat = dtc.listCategories();
+      %>
+
       <thead>
       <tr>
         <th>ID</th>
         <th>Tipo</th>
         <th>Nombre de la categoria</th>
-        <th>Opciones</th>
+        <th>Descripción</th>
 
 
       </tr>
       </thead>
       <tbody>
+
+      <% for(vwTypeCategory cat : listCat){ %>
+
       <tr>
-        <td>1</td>
-        <td>Producto</td>
-        <td>Arris DG2460</td>
+        <td><%=cat.getTcId()%></td>
+        <td><%=cat.getType()%></td>
+        <td><%=cat.getCat()%></td>
+        <td><%=cat.getDesc()%></td>
         <td>
           <a href="/category-forms/read-category-form.html">
             <button class="btn btn-primary w-45" type="button">Ver</button>
@@ -241,7 +254,7 @@
         </td>
       </tr>
 
-
+      <% } %>
 
       </tbody>
     </table>

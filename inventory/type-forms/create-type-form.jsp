@@ -5,8 +5,6 @@
     response.setHeader( "Cache-Control", "no-store" );
     response.setDateHeader( "Expires", 0 );
     response.setDateHeader( "Expires", -1 );
-
-
 %>
 
 <!DOCTYPE html>
