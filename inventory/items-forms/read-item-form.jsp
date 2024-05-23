@@ -84,7 +84,7 @@
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="/Users/users-profile.html">
+          <a class="dropdown-item d-flex align-items-center" href="${pageContext.request.contextPath}/Users/users-profile.html">
             <i class="bi bi-person"></i>
             <span>Perfil</span>
           </a>
