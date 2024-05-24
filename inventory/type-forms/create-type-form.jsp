@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; ISO-8859-1" pageEncoding="ISO-8859-1" import="entities.*, data.*, java.util.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
 
 <%
     response.setHeader( "Pragma", "no-cache" );
@@ -226,8 +229,7 @@
             <h5 class="card-title">Nuevo Tipo</h5>
 
             <!-- Horizontal Form -->
-            <form class="" action="../../src/main/java/servlets/slType" method="post" novalidate>
-                <input type="hidden" value="1" name="opcion" id="opcion"/>
+            <form class="" action="SIBET-URL/src/main/java/servlets/slType" method="post" novalidate>
                 <div class="row mb-3">
                     <label for="idType" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
@@ -308,3 +310,23 @@
 </body>
 
 </html>
+
+<%
+    Connection con;
+    String url = "jdbc:mysql://localhost:3306/sibet";
+    String user = "admin";
+    String password = "Nicaragua22.!";
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    con = DriverManager.getConnection(url, user, password);
+    PreparedStatement ps;
+
+    String name = request.getParameter("typeName");
+    String id = request.getParameter("idType");
+    if(name != null && id != null){
+        ps= con.prepareStatement("INSERT INTO type (idType, typeName) VALUES ("+id+", "+name+")");
+        ps.setString(1, id);
+        ps.setString(2, name);
+        ps.executeUpdate();
+        response.sendRedirect("type.jsp");
+    }
+%>

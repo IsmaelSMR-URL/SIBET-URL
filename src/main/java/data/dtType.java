@@ -1,5 +1,6 @@
 package data;
 
+import entities.interfaces.CRUD;
 import entities.tables.typeTable;
 
 import java.sql.Connection;
@@ -7,8 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class dtType {
+public class dtType implements CRUD {
 
     connectionPool pc = connectionPool.getInstance();
     Connection c = null;
@@ -62,98 +64,37 @@ public class dtType {
         }
         return listType;
     }
+    @Override
+    public List listar() {
+        return null;
+    }
 
-    public boolean addType(typeTable type){
-        boolean saved = false;
-        try{
-            c = connectionPool.getConnection();
-            this.fillRsType(c);
-            this.rsType.moveToInsertRow();
+    @Override
+    public typeTable list(int id) {
+        return null;
+    }
 
-            rsType.updateInt("typeId", type.getTypeId());
-            rsType.updateString("name", type.getName());
-            rsType.insertRow();
-
-            rsType.insertRow();
-            rsType.moveToCurrentRow();
-            saved = true;
-
-        } catch (Exception e) {
+    @Override
+    public boolean add(typeTable t) {
+        String sql= "INSERT INTO sibet.type (typeId, name) VALUES ('"+t.getTypeId()+"','"+t.getName()+"')";
+        try {
+            this.c = connectionPool.getConnection();
+            this.ps = this.c.prepareStatement(sql);
+            this.ps.executeUpdate();
+        } catch (SQLException e) {
             System.out.println("ERROR EN INSERTAR TIPO: " + e.getMessage());
             e.printStackTrace();
-        }finally {
-            try {
-                if (rsType != null) {
-                    rsType.close();
-                }
-                if (c != null) {
-                    ps.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return saved;
+    }
+        return false;
     }
 
-    public boolean updateType(typeTable type) {
-        boolean modified = false;
-        try {
-            c = connectionPool.getConnection();
-            this.fillRsType(c);
-            while (rsType.next()) {
-                if (rsType.getInt("typeId") == type.getTypeId()) {
-                    rsType.updateString("name", type.getName());
-                    rsType.updateRow();
-                    modified = true;
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("ERROR EN MODIFICAR TIPO: " + e.getMessage());
-            e.printStackTrace();
-        }finally {
-            try {
-                if (rsType != null) {
-                    rsType.close();
-                }
-                if (c != null) {
-                    connectionPool.closeConnection(c);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return modified;
+    @Override
+    public boolean edit(typeTable t) {
+        return false;
     }
 
-    public boolean deleteType(int typeId) {
-        boolean deleted = false;
-        try {
-            c = connectionPool.getConnection();
-            this.fillRsType(c);
-            while (rsType.next()) {
-                if (rsType.getInt("typeId") == typeId) {
-                    rsType.deleteRow();
-                    deleted = true;
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("ERROR EN ELIMINAR TIPO: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rsType != null) {
-                    rsType.close();
-                }
-                if (c != null) {
-                    connectionPool.closeConnection(c);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return deleted;
+    @Override
+    public boolean delete(int id) {
+        return false;
     }
 }

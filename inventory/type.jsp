@@ -244,13 +244,13 @@
                     <td><%=tt.getTypeId()%></td>
                     <td><%=tt.getName()%></td>
                     <td>
-                        <a href="/type-forms/read-type-form.html">
+                        <a href="${pageContext.request.contextPath}/inventory/type-forms/read-type-form.jsp">
                             <button class="btn btn-primary w-30" type="button">Ver</button>
                         </a>
-                        <a href="/type-forms/update-type-form.html">
+                        <a href="${pageContext.request.contextPath}/inventory/type-forms/update-type-form.jsp">
                             <button class="btn btn-secondary w-30" type="button">Editar</button>
                         </a>
-                        <a href="/type-forms/delete-type-form.html">
+                        <a href="${pageContext.request.contextPath}/inventory/type-forms/delete-type-form.jsp">
                             <button class="btn btn-success w-30" type="button">Eliminar</button>
                         </a>
                     </td>
@@ -261,7 +261,7 @@
             </table>
             <!-- End Table with stripped rows -->
 
-            <a href="../inventory/type-forms/create-type-form.jsp">
+            <a href="../src/main/java/servlets/slType?action=add">
                 <button class="btn btn-primary w-45" type="button">Nuevo</button>
             </a>
 
